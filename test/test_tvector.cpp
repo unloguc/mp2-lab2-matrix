@@ -41,18 +41,24 @@ TEST(TVector, can_create_copied_vector)
 
 TEST(TVector, copied_vector_is_equal_to_source_one)
 {
-  ADD_FAILURE();
+	TVector<int> v(2, 0);
+	v[1] = 2;
+	TVector<int> pv(v);
+
+	EXPECT_EQ(v,pv);
 }
 
 TEST(TVector, copied_vector_has_its_own_memory)
 {
-  ADD_FAILURE();
+	TVector<int> v(2, 0);
+	TVector<int> pv(v);
+	pv[1] = 2;
+	EXPECT_NE(pv[1], v[1]);
 }
 
 TEST(TVector, can_get_size)
 {
   TVector<int> v(4);
-
   EXPECT_EQ(4, v.GetSize());
 }
 
@@ -73,17 +79,21 @@ TEST(TVector, can_set_and_get_element)
 
 TEST(TVector, throws_when_set_element_with_negative_index)
 {
-  ADD_FAILURE();
+	TVector<int> v(4);
+	ASSERT_ANY_THROW(v[-22]=2);
 }
 
 TEST(TVector, throws_when_set_element_with_too_large_index)
 {
-  ADD_FAILURE();
+	TVector<int> v(2);
+	ASSERT_ANY_THROW(v[2] = 2);
 }
 
 TEST(TVector, can_assign_vector_to_itself)
 {
-  ADD_FAILURE();
+	TVector<int> v(4);
+	v[3] = 5;
+	EXPECT_EQ(v=v, v);
 }
 
 TEST(TVector, can_assign_vectors_of_equal_size)

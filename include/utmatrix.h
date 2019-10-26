@@ -107,7 +107,7 @@ bool TVector<ValType>::operator==(const TVector &v) const
 		return false;
 	for (int i=0;i<Size;i++)
 	{
-		if (pVector[i] != v.pVector[])
+		if (pVector[i] != v.pVector[i])
 			return false;
 	}
 	return true;
@@ -189,7 +189,7 @@ TVector<ValType> TVector<ValType>::operator+(const TVector<ValType> &v)
 	TVector<ValType> tmp(Size, StartIndex);
 	for (int i = 0; i < Size; i++)
 	{
-		tmp[i] = pVector[i] + v[i];
+		tmp.pVector[i] = pVector[i] + v.pVector[i];
 	}
 	return tmp;
 } 
@@ -311,13 +311,14 @@ TMatrix<ValType> TMatrix<ValType>::operator+(const TMatrix<ValType> &mt)
 {
     // благодаря наследованию от TVector<TVector<ValType> > operator+
     // уже есть, надо только его вызвать
-    return mt+*this;
+	return  TVector<TVector<ValType>>::operator+(mt);
 } /*-------------------------------------------------------------------------*/
 
 template <class ValType> // вычитание
 TMatrix<ValType> TMatrix<ValType>::operator-(const TMatrix<ValType> &mt)
 {
-	return mt - *this;
+
+	return  TVector<TVector<ValType>>::operator-(mt);
 } /*--------------------------------------------------s-----------------------*/
 
 // TVector О3 Л2 П4 С6
