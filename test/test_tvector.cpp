@@ -98,76 +98,140 @@ TEST(TVector, can_assign_vector_to_itself)
 
 TEST(TVector, can_assign_vectors_of_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5);
+	first = second;
+	EXPECT_EQ(first, second);
 }
 
 TEST(TVector, assign_operator_change_vector_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5);
+	second[3] = 5;
+	first = second;
+	EXPECT_EQ(first, second);
 }
 
 TEST(TVector, can_assign_vectors_of_different_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(7);
+	second[3] = 5;
+	first = second;
+	EXPECT_EQ(first, second);
 }
 
 TEST(TVector, compare_equal_vectors_return_true)
 {
-  ADD_FAILURE();
+	TVector<int> first(3), second(3);
+	first[0] = 1;
+	first[1] = 2;
+	first[2] = 3;
+	second = first;
+	EXPECT_EQ(first, second);
 }
 
 TEST(TVector, compare_vector_with_itself_return_true)
 {
-  ADD_FAILURE();
+	TVector<int> first(6);
+	EXPECT_EQ(first, first);
 }
 
 TEST(TVector, vectors_with_different_size_are_not_equal)
 {
-  ADD_FAILURE();
+	TVector<int> first(3);
+	first[0] = 1;
+	first[1] = 2;
+	first[2] = 3;
+	EXPECT_EQ(first, first);
 }
 
 TEST(TVector, can_add_scalar_to_vector)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5);
+	for (int i = 0; i < 5; i++)
+	{
+		first[i] = 2;
+		second[i] = 10;
+	}
+	first = first + 8;
+	EXPECT_EQ(first, second);
 }
 
 TEST(TVector, can_subtract_scalar_from_vector)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5);
+	for (int i = 0; i < 5; i++)
+	{
+		first[i] = 10;
+		second[i] = 2;
+	}
+	first = first - 8;
+	EXPECT_EQ(first, second);
 }
 
 TEST(TVector, can_multiply_scalar_by_vector)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5);
+	for (int i = 0; i < 5; i++)
+	{
+		first[i] = 2;
+		second[i] = 10;
+	}
+	first = first*5;
+	EXPECT_EQ(first, second);
 }
 
 TEST(TVector, can_add_vectors_with_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5), sum(5);
+	for (int i = 0; i < 5; i++)
+	{
+		first[i] = i;
+		second[i] = 8;
+		sum[i] = 8 + i;
+	}
+	EXPECT_EQ(first + second, sum);
 }
 
 TEST(TVector, cant_add_vectors_with_not_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(11), second(6);
+	ASSERT_ANY_THROW(first + second);
 }
 
 TEST(TVector, can_subtract_vectors_with_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5), sum(5);
+	for (int i = 0; i < 5; i++)
+	{
+		first[i] = 8;
+		second[i] = i;
+		sum[i] = 8 - i;
+	}
+	EXPECT_EQ(first - second, sum);
 }
 
 TEST(TVector, cant_subtract_vectors_with_not_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(11), second(6);
+	ASSERT_ANY_THROW(first - second);
 }
 
 TEST(TVector, can_multiply_vectors_with_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(5), second(5);
+	int mult = 0;
+	for (int i = 0; i < 5; i++)
+	{
+		first[i] = 8;
+		second[i] = i;
+		mult = mult + 8 * i;
+	}
+	EXPECT_EQ(first * second, mult);
 }
 
 TEST(TVector, cant_multiply_vectors_with_not_equal_size)
 {
-  ADD_FAILURE();
+	TVector<int> first(11), second(6);
+	ASSERT_ANY_THROW(first * second);
 }
 

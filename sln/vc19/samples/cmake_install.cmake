@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/pasuh/source/repos/mp2-lab2-matrix/samples
+# Install script for directory: C:/Users/Дима/source/repos/unloguc/mp2-lab2-matrix/samples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
