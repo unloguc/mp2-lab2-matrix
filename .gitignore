@@ -6,7 +6,7 @@
 *.dep
 *.res
 *.resources
-/sln/
+/sln/**
 # Precompiled Headers
 *.gch
 *.pch
